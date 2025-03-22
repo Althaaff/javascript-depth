@@ -59,7 +59,6 @@ function mergeSortedArrays(arr1, arr2) {
   }
 
   let sortedArr1 = customSort(arr1); // Here i will get this function --> customSort() returned value
-
   // console.log("sorted ?", sortedArr1);
   let sortedArr2 = customSort(arr2); // Here i will get this function --> customSort() returned value
 
