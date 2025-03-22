@@ -40,3 +40,27 @@ function removeDuplicates(arr) {
 }
 
 console.log(removeDuplicates([1, 1, 2, 3, 4, 5, 5, 6, 7, 8, 8]));
+
+// function rmoveDuplicates(arr) {
+//   return arr.filter((item, index) => arr.indexOf(item) === index);
+// }
+
+// console.log(rmoveDuplicates([1, 1, 2, 3, 4, 5, 5, 6, 7, 8, 8]));
+
+function rmoveDuplicates(arr) {
+  let seen = {};
+
+  let unique = [];
+
+  for (let num of arr) {
+    if (!seen[num]) {
+      unique.push(num);
+
+      seen[num] = true;
+    }
+  }
+
+  return unique;
+}
+
+console.log(rmoveDuplicates([1, 2, 2, 4, 5, 5, 7, 8, 8]));

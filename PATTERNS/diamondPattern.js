@@ -43,7 +43,7 @@ function primeDiamondPattern(n) {
   // Print lower half (mirror of upper)
   index -= n;
 
-  console.log(index); // Adjust index to print mirror image correctly
+  // console.log(index); // Adjust index to print mirror image correctly
   for (let i = n - 1; i >= 1; i--) {
     let spaces = " ".repeat((n - i) * 2);
     let row = [];
@@ -58,4 +58,4 @@ function primeDiamondPattern(n) {
 }
 
 // Call the function with n = 4
-primeDiamondPattern(6);
+primeDiamondPattern(7);
