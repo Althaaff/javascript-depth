@@ -25,7 +25,7 @@ freqMaps[char] = freqMaps[char] || 0 + 1; // setting value to object key
 console.log(freqMaps);
 
 function checkAnagrams(str1, str2) {
-  if ((str1.length === 0) & (str2.length === 0)) return false;
+  if (str1.length !== str2.length) return false;
   let freqMap = {};
 
   for (let char of str1) {
