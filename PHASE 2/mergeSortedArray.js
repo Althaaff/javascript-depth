@@ -49,6 +49,7 @@ function mergeSortedArrays(arr1, arr2) {
   function customSort(arr) {
     return arr.reduce((sortedArr, num) => {
       // console.log(sortedArr);
+      // every item iteration in reduce method while loop starts from 0
       let i = 0;
       while (i < sortedArr.length && sortedArr[i] < num) {
         i++;
@@ -76,8 +77,14 @@ function mergeSortedArrays(arr1, arr2) {
     }
   }
 
-  while (i < sortedArr1.length) mergedArray.push(sortedArr1[i++]);
-  while (j < sortedArr2.length) mergedArray.push(sortedArr2[j++]);
+  while (i < sortedArr1.length) {
+    mergedArray.push(sortedArr1[i]);
+    i++;
+  }
+  while (j < sortedArr2.length) {
+    mergedArray.push(sortedArr2[j]);
+    j++;
+  }
 
   return mergedArray;
 }
