@@ -21,9 +21,11 @@
 
 // remove specific child from the parent :
 function removeOneChild(parent) {
-  if (parent && parent.firstElementChild) {
+  console.log("first element child:", parent.firstElementChild);
+  console.log("last element child:", parent.lastElementChild);
+  if (parent && parent.lastElementChild) {
     // Ensure parent exists & has a child
-    parent.removeChild(parent.firstElementChild);
+    parent.removeChild(parent.lastElementChild);
   }
 }
 
