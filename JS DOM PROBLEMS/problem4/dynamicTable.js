@@ -1,4 +1,4 @@
-function createTable(data, containerId) {
+function createTable(data, containerId, stripeColor = "red") {
   if (!data) return;
 
   const table = document.createElement("table");
@@ -23,7 +23,7 @@ function createTable(data, containerId) {
   // create table body :
   const tbody = document.createElement("tbody");
 
-  data.forEach((item) => {
+  data.forEach((item, index) => {
     console.log("item :", item);
     const row = document.createElement("tr");
 
@@ -34,6 +34,14 @@ function createTable(data, containerId) {
       row.appendChild(tdata);
     });
 
+    // apply zebra-stripe styling dynamically :
+    if (index % 2 === 0) {
+      row.style.backgroundColor = stripeColor;
+      row.style.color = "black";
+    } else {
+      row.style.backgroundColor = "#ffffff";
+    }
+
     tbody.appendChild(row);
   });
 
@@ -42,6 +50,13 @@ function createTable(data, containerId) {
   const container = document.getElementById(containerId);
   container.innerHTML = "";
   container.appendChild(table);
+}
+
+// Function to update zebra-striping dynamically :
+function updateZibraColor() {
+  const color = document.getElementById("stripeColor").value;
+  // call createTable function :
+  createTable(users, "container", color);
 }
 
 // sample data :
