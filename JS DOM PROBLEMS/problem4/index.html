@@ -8,12 +8,15 @@
 </head>
 
 <body>
+  <div
+    style="display: flex; align-items: center; justify-content: center; gap: 5px; position: absolute; top: 40%; left: 43%;">
+    <label for="stripeColor">Select a stripe color:</label>
+    <input type="color" id="stripeColor" value="green">
+    <button class="btn" onclick="updateZibraColor()">Apply color</button>
+  </div>
 
-  <label for="stripeColor">Select a stripe color:</label>
-  <input type="color" id="stripeColor" value="green">
-  <button class="btn" onclick="updateZibraColor()">Apply color</button>
-
-  <div id="container"></div>
+  <div id="container" style="height: 100vh; display: flex; align-items: center; justify-content: center;">
+  </div>
 </body>
 <script src="dynamicTable.js"></script>
 

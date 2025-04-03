@@ -1,3 +1,5 @@
+<!-- COMPLETE JAVASCRIPT PROBLEMS SOLVING BASIC FUNDAMENTALS TO ADVANCED -->
+
 # DOM JS PROBLEMS
 
 # Write a function to toggle the visibility of a DOM element.

@@ -18,7 +18,7 @@ function throttle(func, delay) {
 const logMessage = (message) =>
   console.log(message, new Date().toLocaleTimeString());
 
-const throttleLog = throttle(logMessage, 2000);
+const throttleLog = throttle(logMessage, 10000);
 
 setInterval(() => throttleLog("Throttle excution"), 500); // calls the function every 500ms, but throttled to execute every 2 seconds.
 

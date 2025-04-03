@@ -50,7 +50,7 @@ function findMostFrequent(arr) {
 console.log(findMostFrequent([1, 3, 5, 6, 7, 8, 8, 9, 0, 0, 0]));
 
 // test
-function check(arr) {
+function checkLargest(arr) {
   let largest = arr[0];
   for (let item of arr) {
     if (item > largest) {
@@ -61,4 +61,4 @@ function check(arr) {
   return largest;
 }
 
-console.log(check([1, 100, 2, 3, 4]));
+console.log(checkLargest([1, 100, 2, 3, 4]));

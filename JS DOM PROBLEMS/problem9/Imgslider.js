@@ -11,6 +11,12 @@ function createImageCarousel(containerId, images, interval = 3000) {
   const slider = document.createElement("div");
   slider.classList.add("carousel-slider");
 
+  const dots = document.querySelectorAll("dots");
+
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {});
+  });
+
   // add images to slider :
   images.forEach((src) => {
     const img = document.createElement("img");

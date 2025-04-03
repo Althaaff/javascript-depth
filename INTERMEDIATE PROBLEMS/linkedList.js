@@ -38,6 +38,8 @@ class LinkedList {
   delete(value) {
     if (!this.head) return;
 
+    console.log("value", this.head.value);
+
     if (this.head.value === value) {
       this.head = this.head.next;
       this.size--;
@@ -67,9 +69,9 @@ class LinkedList {
 
   // Reverse the Linked List (O(N))
   reverse() {
-    let prev = null,
-      current = this.head,
-      next = null;
+    let prev = null, // intially
+      current = this.head, // intially
+      next = null; // intially
 
     while (current) {
       next = current.next; // Save next node
@@ -82,6 +84,7 @@ class LinkedList {
   }
 
   // print the List
+  // This function prints the entire linked list in a readable format like:
   print() {
     let current = this.head;
     let result = "";
@@ -111,3 +114,11 @@ console.log(list.search(5)); // false
 
 list.reverse();
 list.print(); // 3 -> 1 -> 0 -> null
+
+// example code :
+const list1 = new LinkedList();
+list1.head = new ListNode(6);
+
+console.log("list 1", list1);
+console.log("list 1", list1.head.value);
+console.log("list 1", list1.head.next);

@@ -9,6 +9,7 @@ function findInterSection(arr1, arr2) {
   for (let num of arr2) {
     if (freqMap[num]) {
       result.push(num);
+      console.log(freqMap[num]);
 
       freqMap[num]--;
     }
@@ -17,7 +18,7 @@ function findInterSection(arr1, arr2) {
   return result;
 }
 
-const arr1 = [1, 3, 4, 4, 6, 7, 8];
-const arr2 = [1, 2, 4, 6, 7, 4];
+const arr1 = [2, 2, 4, 5, 6, 2];
+const arr2 = [2, 4, 2, 2, 8, 0];
 
 console.log(findInterSection(arr1, arr2));

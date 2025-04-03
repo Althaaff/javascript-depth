@@ -28,7 +28,7 @@ function sortNum(arr) {
   return arr;
 }
 
-console.log(sortNum([5, 2, 9, 1, 5, 6, 8]));
+console.log(sortNum([0, 2, 9, 1, 5, 6, 8]));
 
 // // Approach 3 :
 // function sortNum(arr) {

@@ -20,6 +20,11 @@ function createTable(data, containerId, stripeColor = "red") {
   thead.appendChild(headerRow);
   table.appendChild(thead);
 
+  // Add an extra column for delete button
+  const thDelete = document.createElement("th");
+  thDelete.textContent = "Action";
+  headerRow.appendChild(thDelete);
+
   // create table body :
   const tbody = document.createElement("tbody");
 
@@ -41,6 +46,13 @@ function createTable(data, containerId, stripeColor = "red") {
     } else {
       row.style.backgroundColor = "#ffffff";
     }
+
+    const tdDelete = document.createElement("td");
+    const btn = document.createElement("button");
+    btn.textContent = "Delete";
+    btn.addEventListener("click", () => row.remove()); // Remove row on click
+    tdDelete.appendChild(btn);
+    row.appendChild(tdDelete);
 
     tbody.appendChild(row);
   });

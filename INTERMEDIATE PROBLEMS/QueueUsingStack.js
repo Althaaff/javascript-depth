@@ -1,3 +1,9 @@
+/* Approach
+Enqueue (push operation) → Simply push elements onto inStack.
+
+Dequeue (pop operation) → If outStack is empty, move all elements from inStack to outStack (this reverses the order to maintain FIFO), then pop from outStack.
+*/
+
 class QueueUsingStacks {
   constructor() {
     this.inStack = []; // Stack for enqueue operations
