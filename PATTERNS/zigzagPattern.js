@@ -15,7 +15,7 @@ function zigzagPattern(n) {
 
 zigzagPattern(4);
 
-//  above code instead of printing the number print * ?
+//  instead of printing the number print * ?
 function zizagStarPattern(n) {
   for (let i = 0; i < n; i++) {
     let row = " ".repeat(i * 2);
