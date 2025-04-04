@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    /* Default Light Mode Styles */
+    body {
+      background-color: white;
+      color: black;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Dark Mode Styles */
+    body.dark-mode {
+      background-color: #121212;
+      color: white;
+    }
+
+    button {
+      padding: 13px;
+      background-color: rgb(41, 141, 180);
+      color: white;
+      font-weight: bold;
+      font-family: sans-serif;
+      border-radius: 12px;
+      border: none;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <button style="cursor: pointer;" id="btn" onclick="toggleTheme(this)"></button>
+</body>
+
+<script src="darkLight.js"></script>
+
+</html>
