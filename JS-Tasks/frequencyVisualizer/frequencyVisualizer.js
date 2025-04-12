@@ -4,9 +4,9 @@ const frequencyDisplay = document.getElementById("frequency");
 inputText.addEventListener("input", showFrequency);
 
 function showFrequency() {
-  const text = inputText.value;
-  const freqMap = {};
-  const hasValidChar = false;
+  let text = inputText.value;
+  let freqMap = {};
+  let hasValidChar = false;
 
   for (let char of text) {
     if (char.match(/[a-z0-9]/)) {
