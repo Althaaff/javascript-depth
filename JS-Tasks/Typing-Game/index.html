@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Typing Game</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="title-section">
+      <h1>TYPING SPEED TEST</h1>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="status-section">
+      <button id="countdown" class="button primary">60s</button>
+      <h3 id="wpm"></h3>
+    </div>
+  </div>
+
+  <div class="container" id="main">
+    <div class="typing-section">
+      <h3 id="word"></h3>
+      <textarea class="text-input" placeholder="Start typing here..."></textarea>
+    </div>
+  </div>
+
+  <div class="container" id="reset">
+    <div class="reset-section">
+      <button id="reset_btn" class="button success">Take the Test Again</button>
+    </div>
+  </div>
+
+</body>
+<script src="typing.js"></script>
+
+
+</html>
