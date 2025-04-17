@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Locan Calculator</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2>Loan Calculator</h2>
+
+    <form id="loanForm">
+      <label>
+        Loan Amount ($):
+        <input type="number" id="amount" min="1" step="any" required>
+      </label>
+
+
+      <label>
+        Annual Interest Rate (%):
+        <input type="number" id="interest" min="1" step="any">
+      </label>
+
+      <label>
+        Long Term (years):
+        <input type="number" id="years" min="1" step="any" required>
+      </label>
+
+
+      <button type="submit">Calculate</button>
+    </form>
+
+
+    <div id="loading" class="hidden">Calculating...</div>
+
+    <div id="results" class="hidden">
+      <p>Monthly Payment: $<span id="monthly">0.00</span></p>
+      <p>Total Payment: $<span id="total">0.00</span></p>
+      <p>Total Interest: $<span id="interestTotal">0.00</span></p>
+    </div>
+
+
+    <div id="error" class="hidden"></div>
+  </div>
+</body>
+
+<script src="loanCalc.js"></script>
+
+</html>
