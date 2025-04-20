@@ -14,8 +14,8 @@ function makeChuckArray(arr, k) {
   return chunks;
 }
 
-const arr = [1, 2, 3, 4, 5, 6, 7];
+const array = [1, 2, 3, 4, 5, 6, 7];
 
-const chunked = makeChuckArray(arr, 3);
+const chunked = makeChuckArray(array, 3);
 
 console.log(chunked);
