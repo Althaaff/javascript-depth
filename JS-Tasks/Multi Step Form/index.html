@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-step Form</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2>Multi-step Form</h2>
+    <div class="progress">
+      <div id="progressBar"></div>
+    </div>
+    <div id="formSteps">
+      <div class="step" id="step0">
+        <h3>Personal Info</h3>
+        <label>
+          Name:
+          <input type="text" name="name" required>
+        </label>
+        <label>
+          Age:
+          <input type="number" name="age" min="1" required>
+        </label>
+      </div>
+      <div class="step hidden" id="step1">
+        <h3>Contact Info</h3>
+        <label>
+          Email:
+          <input type="email" name="email" required>
+        </label>
+        <label>
+          Phone:
+          <input type="tel" name="phone" required>
+        </label>
+      </div>
+      <div class="step hidden" id="step2">
+        <h3>Review</h3>
+        <p>Please review your information:</p>
+        <div id="reviewData"></div>
+      </div>
+    </div>
+    <div id="error" class="hidden"></div>
+    <div class="navigation">
+      <button id="prevButton" class="hidden">Previous</button>
+      <button id="nextButton">Next</button>
+      <button id="submitButton" class="hidden">Submit</button>
+    </div>
+    <div id="results" class="hidden">
+      <h3>Submission Complete</h3>
+      <div id="finalData"></div>
+      <button id="resetButton">Start Over</button>
+    </div>
+  </div>
+</body>
+<script src="multiStepForm.js"></script>
+
+
+</html>
