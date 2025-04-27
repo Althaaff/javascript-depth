@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drag and Drop File Uploader</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2>File Uploader</h2>
+    <div id="dropArea" class="drop-area">
+      <p>Drag & Drop files here or click to select</p>
+      <input type="file" id="fileInput" multiple accept=".jpg,.png,.pdf">
+    </div>
+    <button id="clearButton" class="hidden">Clear Files</button>
+    <div id="fileList" class="file-list"></div>
+  </div>
+  <script src="fileUploader.js"></script>
+</body>
+
+</html>
