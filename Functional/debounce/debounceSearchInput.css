@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  border: 0.5px solid black;
+  border-radius: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  -ms-border-radius: 9px;
+  -o-border-radius: 9px;
+
+  margin-top: 90px;
+  padding: 10px;
+}
+
+#inputText {
+  padding: 20px;
+  color: black;
+  width: 200px;
+}
+
+.suggestions {
+  width: 200px;
+  height: 300px;
+  padding: 40px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  background-color: silver;
+  padding-bottom: 10px;
+  color: black;
+  font-family: sans-serif;
+}
