@@ -298,3 +298,96 @@ for (let key in checkArray) {
 Object.keys(exObject).forEach((key, i) => {
   console.log(`key ${key} index ${i}`);
 });
+
+// Problem: Student Report Card Generator
+// You are given a list of students. Each student has a name, roll number, and a list of subjects with their marks. You need to:
+/*
+ Generate a report for each student including:
+
+  Total marks
+
+  Average marks
+
+  Grade (based on average)
+
+  Grade Rules:
+
+  A: 90–100
+
+  B: 80–89
+
+  C: 70–79
+
+  D: 60–69
+
+  F: Below 60
+*/
+
+const students = [
+  {
+    name: "Althaf",
+    roll: 101,
+    subjects: {
+      math: 95,
+      science: 88,
+      english: 92,
+    },
+  },
+  {
+    name: "Ansar",
+    roll: 102,
+    subjects: {
+      math: 78,
+      science: 85,
+      english: 69,
+    },
+  },
+  {
+    name: "Ameer",
+    roll: 101,
+    subjects: {
+      math: 40,
+      science: 88,
+      english: 92,
+    },
+  },
+];
+
+function getGrade(avg) {
+  if (avg >= 90) return "A";
+  if (avg >= 80) return "B";
+  if (avg >= 70) return "C";
+  if (avg >= 60) return "D";
+
+  return "F";
+}
+
+function generateReports(students) {
+  const tbody = document.getElementById("student-table-body");
+  console.log(tbody);
+  tbody.innerHTML = ""; // clear if any existing rows
+
+  students.forEach((student) => {
+    const marks = Object.values(student.subjects);
+    const total = marks.reduce((acc, curr) => acc + curr, 0);
+    const average = total / marks.length;
+    const grade = getGrade(average);
+
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+     <td>${student.roll}</td>
+     <td>${student.name}</td>
+     <td>${student.subjects.math}</td>
+     <td>${student.subjects.science}</td>
+     <td>${student.subjects.english}</td>
+     <td>${total}</td>
+     <td>${average.toFixed(2)}</td>
+     <td>${grade}</td>
+    `;
+
+    tbody.appendChild(row);
+  });
+}
+
+generateReports(students);
