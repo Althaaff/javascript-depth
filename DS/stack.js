@@ -190,3 +190,58 @@ console.log(stack3.display());
 console.log(stack3.size());
 stack3.clear();
 console.log(stack3.isEmpty());
+
+// Stack data structure using ES6 :
+
+class StackClass {
+  constructor() {
+    this.items = [];
+  }
+
+  push = function (element) {
+    this.items.push(element);
+  };
+
+  display = function () {
+    let pushedElements = "";
+
+    for (let i = 0; i < this.items.length; i++) {
+      pushedElements += this.items[i] + " ";
+    }
+    return pushedElements.trim();
+  };
+
+  pop = function () {
+    return this.items.pop();
+  };
+
+  peek = function () {
+    return this.items[this.items.length - 1];
+  };
+
+  isEmpty = function () {
+    return this.items.length === 0;
+  };
+
+  clear = function () {
+    this.items.length = 0;
+  };
+
+  size = function () {
+    return this.items.length;
+  };
+}
+
+let stack4 = new StackClass();
+
+stack4.push(11);
+stack4.push(12);
+stack4.push(13);
+
+console.log(stack4.display());
+console.log(stack4.isEmpty());
+console.log(stack4.pop());
+console.log(stack4.peek());
+console.log(stack4.size());
+stack4.clear();
+console.log(stack4.isEmpty());
