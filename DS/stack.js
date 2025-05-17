@@ -127,3 +127,66 @@ console.log(stack2.peek());
 console.log(stack2.size());
 stack2.clear();
 console.log(stack2.isEmpty());
+
+// Making the properties and methods private with closure and IIFE (Immediately Invoked Function Expression).
+var StackFunc = (function () {
+  return function Stack() {
+    let items = [];
+
+    //other methods go here
+    //Push an item in the Stack :
+    this.push = function (element) {
+      items.push(element);
+    };
+
+    // display the pushed elements from the stack :
+    this.display = function () {
+      let pushedElements = "";
+      for (let i = 0; i < items.length; i++) {
+        pushedElements += items[i] + " ";
+      }
+
+      return pushedElements.trim();
+    };
+
+    //Pop an item from the Stack :
+    this.pop = function () {
+      return items.pop();
+    };
+
+    //Peek top item from the Stack :
+    this.peek = function () {
+      return items[items.length - 1];
+    };
+
+    //Is Stack empty
+    this.isEmpty = function () {
+      return items.length === 0;
+    };
+
+    // clear the stack :
+    this.clear = function () {
+      items.length = 0;
+    };
+
+    // Size of the stack :
+    this.size = function () {
+      return items.length;
+    };
+  };
+})();
+
+let stack3 = new StackFunc();
+
+stack3.push(6);
+stack3.push(7);
+stack3.push(8);
+
+console.log(stack3.display());
+console.log(stack3.peek());
+console.log(stack3.isEmpty());
+console.log(stack3.pop());
+console.log(stack3.display());
+console.log(stack3.size());
+stack3.clear();
+console.log(stack3.isEmpty());
