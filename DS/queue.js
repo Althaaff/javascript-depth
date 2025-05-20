@@ -80,7 +80,61 @@ console.log(queue.print());
 console.log(queue.size());
 console.log(queue.dequeue());
 console.log(queue.dequeue());
-console.log(queue.dequeue());
+console.log("rear", queue.rear());
 console.log("size", queue.size());
 
 console.log(queue.isEmptyQueue());
+
+// 2. Queue with javascript array methods :
+function Queue2() {
+  let items = [];
+
+  // other methods goes here :
+
+  // Add a new element in queue
+  this.enqueue = function (elm) {
+    items.push(elm);
+  };
+
+  // remove element from the queue and return it :
+  this.dequeue = function () {
+    return items.shift();
+  };
+
+  // Return the first element from the queue :
+  this.front = function () {
+    return items[0];
+  };
+
+  // Return the last element from the queue :
+  this.rear = function () {
+    return items[items.length - 1];
+  };
+
+  // Check if queue is empty :
+  this.isEmptyQueue = function () {
+    return items.length === 0;
+  };
+
+  // Return the size of the queue :
+  this.size = function () {
+    return items.length;
+  };
+
+  // Print the queue :
+  this.print = function () {
+    return items.toString();
+  };
+}
+
+let queue2 = new Queue2();
+queue2.enqueue(5);
+queue2.enqueue(6);
+queue2.enqueue(7);
+
+console.log("empty ?", queue2.isEmptyQueue());
+console.log(queue2.size());
+console.log(queue2.dequeue());
+console.log(queue2.front());
+console.log(queue2.rear());
+console.log(queue2.print());
