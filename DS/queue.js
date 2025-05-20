@@ -138,3 +138,62 @@ console.log(queue2.dequeue());
 console.log(queue2.front());
 console.log(queue2.rear());
 console.log(queue2.print());
+
+// Queue data structure using ES6 :
+
+class Queue3 {
+  constructor() {
+    this.items = [];
+  }
+
+  // enqueue :
+  enqueue(elm) {
+    this.items.push(elm);
+  }
+
+  // dequeue :
+  dequeue() {
+    return this.items.shift();
+  }
+
+  // front (return first element of the queue) :
+  front() {
+    return this.items[0];
+  }
+
+  // rear (return last element of the queue) :
+  rear() {
+    return this.items[this.items.length - 1];
+  }
+
+  // isEmpty (check queue is empty) :
+  isEmptyQueue() {
+    return this.items.length === 0;
+  }
+
+  // size (return size of the queue) :
+  size() {
+    return this.items.length;
+  }
+
+  // print :
+  print() {
+    return this.items.toString();
+  }
+}
+
+let queue3 = new Queue3();
+
+queue3.enqueue(8);
+queue3.enqueue(9);
+queue3.enqueue(3);
+
+console.log(queue3.print());
+console.log(queue3.dequeue());
+console.log(queue3.print());
+console.log(queue3.front());
+console.log(queue3.rear());
+console.log(queue3.size());
+console.log(queue3.isEmptyQueue());
+console.log(queue3.dequeue());
+console.log(queue3.print());
