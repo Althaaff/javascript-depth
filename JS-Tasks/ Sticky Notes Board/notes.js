@@ -48,6 +48,7 @@ function deleteNote(id) {
 
 function startDrag(e, id) {
   e.preventDefault();
+  isDragging = true;
 
   currentNote = notes.find((note) => note.id === id);
   startX = e.clientX - currentNote.x;
@@ -79,8 +80,9 @@ function drag(e) {
 
   // Update DOM :
   const noteElement = document.querySelector(
-    `.note[data-id=${currentNote.id}]`
+    `.note[data-id="${currentNote.id}"]`
   );
+
   noteElement.style.left = `${newX}px`;
   noteElement.style.top = `${newY}px`;
 }
@@ -118,9 +120,10 @@ function renderNotes() {
     const textarea = noteElement.querySelector("textarea");
     const deleteButton = noteElement.querySelector(".delete");
 
-    textarea.addEventListener("input", () =>
-      updateNote(note.id, textarea.value)
-    );
+    textarea.addEventListener("input", () => {
+      updateNote(note.id, textarea.value);
+    });
+
     deleteButton.addEventListener("click", () => deleteNote(note.id));
     noteElement.addEventListener("mousedown", (e) => startDrag(e, note.id));
     board.appendChild(noteElement);
