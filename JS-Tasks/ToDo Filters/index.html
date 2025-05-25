@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo Filter</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="container">
+    <section class="input-section">
+      <input type="text" placeholder="Entet a task" id="taskInput">
+      <button id="addButton">Add Task</button>
+    </section>
+
+    <div id="error" class="hidden"></div>
+
+
+
+    <nav class="filters">
+      <button class="filter active" data-filter="all">All</button>
+      <button class="filter" data-filter="done">Done</button>
+      <button class="filter" data-filter="active">Active</button>
+    </nav>
+    <ul id="taskList"></ul>
+  </div>
+</body>
+
+<script src="todoFilter.js"></script>
+
+</html>
