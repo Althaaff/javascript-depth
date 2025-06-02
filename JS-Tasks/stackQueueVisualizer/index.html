@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>stackQueueVisualizer</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2>Stack & Queue Simulator</h2>
+
+    <div class="input-section">
+      <input type="text" id="elementInput" placeholder="Enter element...">
+      <div id="error" class="hidden"></div>
+    </div>
+
+
+    <div class="simulator">
+      <div class="stack-section">
+        <h3>Stack (LIFO)</h3>
+
+        <button id="pushButton">Push</button>
+        <button id="popButton">Pop</button>
+
+        <div id="stack" class="stack">
+          <div class="label top">Top</div>
+        </div>
+      </div>
+
+      <div class="queue-section">
+        <h3>Queue (FIFO)</h3>
+
+        <button id="enqueueButton">Enqueue</button>
+        <button id="dequeueButton">Dequeue</button>
+
+        <div id="queue" class="queue">
+          <div class="label front">Front</div>
+          <div class="label rear">Rear</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="stackQueueVisualizer.js"></script>
+
+</html>
