@@ -1,0 +1,111 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+.container {
+  text-align: center;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  width: 90%;
+}
+
+.input-section {
+  margin-bottom: 20px;
+}
+
+#jsonInput {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+#fileInput {
+  margin: 10px 0;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#error {
+  color: #f44336;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.chart {
+  position: relative;
+  height: 400px;
+  border-left: 2px solid #333;
+  border-bottom: 2px solid #333;
+  padding: 20px;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.bar {
+  flex: 1;
+  background: #2196f3;
+  transition: height 0.3s ease;
+  position: relative;
+}
+
+.bar-label {
+  position: absolute;
+  bottom: -20px;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+}
+
+.y-axis {
+  position: absolute;
+  left: -40px;
+  top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.y-tick {
+  position: relative;
+  left: 5px;
+  font-size: 12px;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .chart {
+    height: 300px;
+    gap: 5px;
+  }
+  .bar-label {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bar Chart from JSON</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2>Bar Chart from JSON</h2>
+    <div class="input-section">
+      <textarea id="jsonInput" rows="5"
+        placeholder='Enter JSON, e.g. [{"label":"A","value":10},{"label":"B","value":20}]'></textarea>
+      <input type="file" id="fileInput" accept=".json">
+      <button id="renderButton">Render Chart</button>
+    </div>
+    <div id="error" class="hidden"></div>
+    <div id="chart" class="chart"></div>
+  </div>
+  <script src="jsonChart.js"></script>
+</body>
+
+</html>
