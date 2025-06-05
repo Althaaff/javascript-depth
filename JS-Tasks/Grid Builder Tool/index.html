@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid Builder Tool</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2>Grid Builder Tools</h2>
+
+    <form class="input-section">
+      <label>
+        Rows:
+        <input type="number" id="rowsInput" min="1" max="50" value="5">
+      </label>
+
+      <label>
+        Columns:
+        <input type="number" id="columnInput" min="1" max="50" value="5">
+      </label>
+
+      <button type="submit" id="buildButton">Build Grid</button>
+      <button type="button" id="resetButton">Reset</button>
+    </form>
+    <div id="error" class="hidden"></div>
+    <div class="gridContainer" id="grid-container"></div>
+  </div>
+</body>
+
+<script src="gridBuilder.js"></script>
