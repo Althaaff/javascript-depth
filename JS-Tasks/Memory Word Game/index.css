@@ -1,0 +1,140 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+.container {
+  text-align: center;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 90%;
+}
+
+.word-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+  font-size: 24px;
+}
+
+.letter {
+  width: 30px;
+  text-align: center;
+  border-bottom: 2px solid #333;
+  padding-bottom: 5px;
+}
+
+.word-container.shake {
+  animation: shake 0.3s;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.lives {
+  font-size: 18px;
+  color: #f44336;
+  margin-bottom: 20px;
+}
+
+.message {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.message.success {
+  color: #4caf50;
+}
+
+.message.failure {
+  color: #f44336;
+}
+
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  max-width: 350px;
+  margin: 0 auto 20px;
+}
+
+.keyboard button {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #f9f9f9;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.keyboard button.correct {
+  background: #4caf50;
+  color: white;
+  border-color: #4caf50;
+}
+
+.keyboard button.incorrect {
+  background: #f44336;
+  color: white;
+  border-color: #f44336;
+}
+
+.keyboard button:disabled {
+  background: #e0e0e0;
+  cursor: not-allowed;
+}
+
+.play-again {
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.play-again:hover {
+  background: #1e88e5;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 400px) {
+  .word-container {
+    gap: 5px;
+    font-size: 20px;
+  }
+  .letter {
+    width: 25px;
+  }
+  .keyboard {
+    max-width: 300px;
+    gap: 3px;
+  }
+  .keyboard button {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
