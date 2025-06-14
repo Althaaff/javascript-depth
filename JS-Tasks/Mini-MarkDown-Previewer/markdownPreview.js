@@ -1,66 +1,99 @@
-// Task: Mini Mark Down Previewer //
+// // Task: Mini Mark Down Previewer //
 
 document.addEventListener("DOMContentLoaded", () => {
-  const markdownInput = document.getElementById("markdownInput");
+  const markDownInput = document.getElementById("markdownInput");
+  const previewImg = document.getElementById("previewImg");
+  console.log(previewImg);
   const preview = document.getElementById("preview");
+  const errorMsg = document.getElementById("error");
+
+  console.log(markDownInput, preview);
 
   function escapeHtml(text) {
     const div = document.createElement("div");
     div.textContent = text;
+
     return div.innerHTML;
   }
 
   function parseInline(text) {
-    // Bold: **text**
-    text = text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
-    // Italic: *text*
+    // bold text :
+    text = text.replace(/\*\*(.\*?)\*\*/g, "<strong>$1</strong>");
+
+    // Italic text :
     text = text.replace(/\*(.*?)\*/g, "<em>$1</em>");
+
     return text;
   }
 
-  function parseMarkdown(input) {
-    const lines = input.split("\n");
+  function parseMarkDown(input) {
+    let lines = input.split("\n");
+
     let html = [];
     let inList = false;
 
     lines.forEach((line) => {
       line = line.trim();
+
       if (!line) {
         if (inList) {
           html.push("</ul>");
           inList = false;
         }
+
         return;
       }
 
-      // Headers: # Text, ## Text
+      // Headers: # Text, ## Text :
       if (line.startsWith("## ")) {
         if (inList) {
           html.push("</ul>");
           inList = false;
         }
+
         html.push(`<h2>${escapeHtml(line.slice(3))}</h2>`);
       } else if (line.startsWith("# ")) {
         if (inList) {
           html.push("</ul>");
           inList = false;
         }
+
         html.push(`<h1>${escapeHtml(line.slice(2))}</h1>`);
       }
-      // Unordered list: - Item
+
+      // Unordered list: - Item :
       else if (line.startsWith("- ")) {
         if (!inList) {
           html.push("<ul>");
           inList = true;
         }
+
         html.push(`<li>${parseInline(escapeHtml(line.slice(2)))}</li>`);
-      }
-      // Paragraph with inline formatting
-      else {
+      } else if (line.startsWith("![")) {
+        // image syntax: ![alt text](image_url)
+        const altText = line.match(/!\[(.*?)\]\((.*?)\)/);
+
+        if (altText) {
+          console.log("alt text", altText);
+          const imgUrl = altText[2];
+
+          if (validateImgUrl(imgUrl)) {
+            console.log("valid url ?", imgUrl);
+
+            html.push(
+              `<img src="${escapeHtml(imgUrl)}" alt="${escapeHtml(
+                altText[1]
+              )}" style="max-width: 100%; height: auto;" />`
+            );
+          }
+        }
+      } else {
+        // Paragraph with inline formatting :
         if (inList) {
           html.push("</ul>");
           inList = false;
         }
+
         html.push(`<p>${parseInline(escapeHtml(line))}</p>`);
       }
     });
@@ -72,10 +105,19 @@ document.addEventListener("DOMContentLoaded", () => {
     return html.join("");
   }
 
+  function validateImgUrl(url) {
+    console.log("URL", url);
+    const imgUrlRegex = /^https?:\/\/.*\.(png|jpg|jpeg)(\?.*)?$/i;
+
+    return imgUrlRegex.test(url);
+  }
+
   function renderPreview() {
-    const markdown = markdownInput.value;
-    preview.innerHTML = parseMarkdown(markdown);
-    saveInput(markdown);
+    const markDown = markDownInput.value;
+
+    preview.innerHTML = parseMarkDown(markDown);
+
+    saveInput(markDown);
   }
 
   function saveInput(text) {
@@ -87,17 +129,20 @@ document.addEventListener("DOMContentLoaded", () => {
   function loadInput() {
     if (typeof localStorage !== "undefined") {
       const saved = localStorage.getItem("markdown");
+
       if (saved) {
-        markdownInput.value = saved;
+        markDownInput.value = saved;
         renderPreview();
       }
     }
   }
 
   let timeout;
-  markdownInput.addEventListener("input", () => {
+
+  markDownInput.addEventListener("input", () => {
     clearTimeout(timeout);
-    timeout = setTimeout(renderPreview, 300); // debounce
+
+    timeout = setTimeout(() => renderPreview(), 300); // debounce
   });
 
   loadInput();
