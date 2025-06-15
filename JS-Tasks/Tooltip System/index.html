@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Tooltip System</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2>Custom Tooltip System</h2>
+    <p>Hover or focus on elements below to see tooltips:</p>
+    <div class="test-area">
+      <span data-tooltip="This is a tooltip!" data-tooltip-position="top">Hover me (Top)</span>
+      <button data-tooltip="Button tooltip" data-tooltip-position="bottom">Hover me (Bottom)</button>
+      <span data-tooltip="Left tooltip" data-tooltip-position="left">Hover me (Left)</span>
+      <span data-tooltip="Right tooltip" data-tooltip-position="right">Hover me (Right)</span>
+      <span data-tooltip="">Empty tooltip</span>
+    </div>
+  </div>
+  <script src="toolTip.js"></script>
+</body>
+
+</html>
