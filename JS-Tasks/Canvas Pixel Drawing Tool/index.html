@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixel Drawing Tool</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2>Pixel Drawing Tool</h2>
+
+    <div class="toolbar">
+      <input type="color" id="colorPicker" value="#000000" aria-label="Select Color">
+      <select id="brushSize" aria-label="Select brush size">
+        <option value="1">1x1</option>
+        <option value="2">2x2</option>
+        <option value="3">3x3</option>
+      </select>
+
+      <button id="eraseButton" aria-label="Toggle eraser">Erase</button>
+      <button id="clearButton" aria-label="Clear canvas">Clear</button>
+    </div>
+
+    <canvas id="canvas" width="320" height="320"></canvas>
+  </div>
+</body>
+<script src="drawingTool.js"></script>
+
+</html>
