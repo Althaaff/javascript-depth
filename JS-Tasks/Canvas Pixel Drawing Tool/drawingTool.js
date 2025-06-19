@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const colorPickerInput = document.getElementById("colorPicker");
-  const brushSizeSelect = document.getElementById("bushSize");
+  const brushSizeSelect = document.getElementById("brushSize");
   const eraseButton = document.getElementById("eraseButton");
   const clearButton = document.getElementById("clearButton");
   const canvas = document.getElementById("canvas");
@@ -12,14 +12,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const state = {
     grid: Array(GRID_SIZE)
       .fill()
-      .map(() => Array(GRID_SIZE))
-      .fill(null),
+      .map(() => Array(GRID_SIZE).fill(null)),
 
     color: "#000000",
     brushSize: 1,
     isEraser: false,
     isDrawing: false,
   };
+  // console.log("grid state", state.grid);
+  console.log(state);
 
   function initCanvas() {
     ctx.fillStyle = "white";
@@ -28,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderGridLines() {
-    ctx.strokeStyle = "red"; // rgba(0, 0,0.1)
+    ctx.strokeStyle = "rgba(0, 0,0.1)"; // rgba(0, 0,0.1)
     ctx.lineWidth = 0.5;
 
     for (let i = 0; i <= GRID_SIZE; i++) {
@@ -56,9 +57,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function drawPixel(x, y) {
+    console.log(x, y);
     if (!isValidCoord(x, y)) return;
 
     const color = state.isEraser ? null : state.color;
+    console.log("color", color);
 
     state.grid[y][y] = color;
     ctx.fillStyle = color || "white";
@@ -69,6 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function applyBrush(x, y) {
     const size = parseInt(state.brushSize);
     const offset = Math.floor(size / 2);
+    // console.log("offset", offset);
 
     for (let i = -offset; i <= offset; i++) {
       for (let j = -offset; j <= offset; j++) {
@@ -104,6 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function handleDraw(e) {
     e.preventDefault();
     const { clientX, clientY } = e.type.startsWith("touch") ? e.touches[0] : e;
+    // console.log("client", clientX, clientY);
 
     const { x, y } = getGridCoords(clientX, clientY);
 
