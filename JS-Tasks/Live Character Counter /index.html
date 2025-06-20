@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Live Character Counter + Limit (warn on overtyping)</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2>Live Character Counter</h2>
+
+    <textarea id="textInput" placeholder="Enter a text.." aria-describedby="counter error"></textarea>
+    <div id="counter" class="counter" aria-live="polite">Characters: 0/280</div>
+    <div id="error" class="error hidden">Character limit reached !</div>
+  </div>
+</body>
+<script src="liveCharCounter.js"></script>
+
+</html>
