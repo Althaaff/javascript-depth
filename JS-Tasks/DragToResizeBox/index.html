@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drag To Resize Image Box</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2>Drag To Resize Box</h2>
+
+
+    <label class="aspect-lock">
+      <input type="checkbox" aria-label="Lock aspect ratio" id="aspectLock">
+      Lock Aspect Ratio
+    </label>
+
+    <div class="resizable" id="resizable">
+      <img draggable="false" src="https://picsum.photos/200" alt="Sample image">
+    </div>
+
+    <div id="dimensions" class="dimensions" aria-live="polite">
+    </div>
+
+  </div>
+</body>
+<script src=" dragToResizeBox.js">
+</script>
+
+</html>

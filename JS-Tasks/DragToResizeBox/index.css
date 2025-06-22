@@ -1,0 +1,90 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+.container {
+  text-align: center;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 90%;
+}
+
+.aspect-lock {
+  display: block;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.resizable {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  border: 2px solid #2196f3;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.resizable img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.handle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #2196f3;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.handle:hover {
+  background: #1e88e5;
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.handle.bottom-right {
+  bottom: -6px;
+  right: -6px;
+  cursor: se-resize;
+}
+
+.handle.bottom {
+  bottom: -6px;
+  left: 50%;
+  cursor: s-resize;
+}
+
+.handle.right {
+  right: -6px;
+  top: 50%;
+  cursor: e-resize;
+}
+
+.dimensions {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+  .resizable {
+    width: 150px;
+    height: 150px;
+  }
+  .handle {
+    width: 10px;
+    height: 10px;
+  }
+}
