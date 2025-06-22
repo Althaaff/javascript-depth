@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speech-to-Text Notepad</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2>Speech-to-Text Notepad</h2>
+    <div class="controls">
+      <button id="startButton" aria-label="Start recording">Start Recording</button>
+      <button id="stopButton" disabled aria-label="Stop recording">Stop Recording</button>
+      <button id="clearButton" aria-label="Clear text">Clear Text</button>
+    </div>
+    <div id="status" class="status" aria-live="polite"></div>
+    <textarea id="textOutput" placeholder="Speak or type here..."></textarea>
+  </div>
+</body>
+<script src="speechToText.js"></script>
+
+
+</html>
