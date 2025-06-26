@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>keyboard shortcuts</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2>Keyboard Shortcuts Handler</h2>
+    <button id="toggleButton" aria-label="Toggle shortcuts">Disable Shortcuts</button>
+    <div id="status" class="status" aria-live="polite"></div>
+
+    <h3>Available Shortcuts</h3>
+    <ul id="shortcutsList" class="shortcuts-list"></ul>
+    <div id="toggleDiv" class="toggle-div hidden">Toggled Content</div>
+    <input type="text" placeholder="Type here (shortcuts ignored)" aria-label="Sample input">
+  </div>
+</body>
+<script src="keyboardShortcuts.js"></script>
+
+</html>

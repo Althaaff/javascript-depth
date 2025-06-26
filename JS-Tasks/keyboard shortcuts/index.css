@@ -1,0 +1,89 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+.container {
+  text-align: center;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 90%;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+button.active {
+  background: #4caf50;
+  color: white;
+}
+
+button:not(.active) {
+  background: #ccc;
+}
+
+button:hover:not(.active) {
+  background: #b0b0b0;
+}
+
+.status {
+  font-size: 16px;
+  color: #4caf50;
+  min-height: 24px;
+  margin-bottom: 20px;
+}
+
+.shortcuts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  text-align: left;
+  display: inline-block;
+}
+
+.shortcuts-list li {
+  font-size: 16px;
+  padding: 5px 0;
+}
+
+.toggle-div {
+  background: #e0f7fa;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 300px;
+}
+
+@media (max-width: 500px) {
+  .shortcuts-list li,
+  button,
+  input {
+    font-size: 14px;
+  }
+}
