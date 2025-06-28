@@ -1,0 +1,148 @@
+// base styles :
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+.app-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.app-header {
+  padding: 20px;
+  background: #2c3e50;
+  color: white;
+  text-align: center;
+}
+
+.app-header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+.app-main {
+  padding: 20px;
+}
+
+.input-container {
+  margin-bottom: 15px;
+}
+
+.expression-input {
+  width: 100%;
+  min-height: 120px;
+  padding: 12px;
+  border: 2px solid #dee2e6;
+  border-radius: 6px;
+  font-family: "Consolas", "Monaco", monospace;
+  font-size: 15px;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+
+.expression-input:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+.validate-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-bottom: 20px;
+}
+
+.validate-btn:hover {
+  background-color: #2980b9;
+}
+
+.result-container {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.result-container.valid {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.result-container.invalid {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.result-icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.result-text {
+  font-weight: 500;
+}
+
+.hidden {
+  display: none;
+}
+
+.examples {
+  margin-top: 25px;
+}
+
+.examples h3 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #495057;
+}
+
+.example {
+  font-family: "Consolas", "Monaco", monospace;
+  padding: 8px 12px;
+  background-color: #e9ecef;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.example:hover {
+  background-color: #dee2e6;
+}
+
+.bracket-match {
+  background-color: #d1f3d1;
+  font-weight: bold;
+}
+
+.bracket-error {
+  background-color: #ffcccc;
+  font-weight: bold;
+}

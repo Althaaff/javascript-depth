@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bracket Balancer</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <h1>Bracket Balancer</h1>
+      <p class="subtitle">Check if your expression has balanced brackets</p>
+    </header>
+
+    <main class="app-main">
+      <div class="input-container">
+        <textarea id="expression-input" class="expression-input"
+          placeholder="Enter expression with brackets (e.g., {[(a + b) * c] - d})"></textarea>
+      </div>
+
+      <button id="validate-btn" class="validate-btn">Check Balance</button>
+
+      <div id="result" class="result-container hidden">
+        <div id="result-icon" class="result-icon"></div>
+        <div id="result-text" class="result-text"></div>
+      </div>
+
+      <div class="examples">
+        <h3>Try these examples:</h3>
+        <div class="example" data-expr="(a + b) * c">(a + b) * c</div>
+        <div class="example" data-expr="{[a + (b - c)]}">{[a + (b - c)]}</div>
+        <div class="example" data-expr="[1, {2: (3 + 4)}]">[1, {2: (3 + 4)}]</div>
+      </div>
+    </main>
+  </div>
+
+</body>
+<script src="expressionBracket.js"></script>
+
+</html>
