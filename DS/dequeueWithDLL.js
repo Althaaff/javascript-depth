@@ -46,9 +46,8 @@
   toString(): Returns all the elements concatenated as a string from front to back.
  */
 
+// DOUBLY LINKED LIST :
 function doublyLinkedLL() {
-  const list = [];
-
   let Node = function (elm) {
     this.element = elm;
     this.prev = null;
@@ -59,10 +58,10 @@ function doublyLinkedLL() {
 
   let tail = null;
 
+  let length = 0;
+
   // doubly linked list methods goes here :
   this.append = function (elm) {
-    list.push(elm);
-
     let node = new Node(elm),
       current = head;
 
@@ -74,44 +73,106 @@ function doublyLinkedLL() {
       tail.next = node;
       tail = node;
     }
+
+    length++;
   };
 
   this.size = function () {
-    return list.length;
+    return length;
   };
 
-  this.insert = function (index, elm) {
-    list.splice(index, 0, elm);
+  this.insert = function (position, elm) {
+    let node = new Node(elm),
+      previous,
+      current = head,
+      index = 0;
+
+    if (position >= 0 && position <= length) {
+      if (position === 0) {
+        if (!head) {
+          head = node;
+          tail = node;
+        } else {
+          node.next = current;
+          current.prev = node;
+          head = node;
+        }
+      } else if (position === length) {
+        current = tail;
+        current.next = node;
+        node.prev = current;
+        tail = node;
+      } else {
+        while (index++ < position) {
+          previous = current;
+          current = current.next;
+        }
+
+        // update now inserting node.next node is current node which node loop ends with iteration that node and previousNode.next node is inserting node //
+        node.next = current;
+        previous.next = node;
+
+        // update current.prev node is now inserting node and now inserting node previous node is previous node  :
+        current.prev = node;
+        node.prev = previous;
+      }
+    }
+
+    length++;
+
+    return true;
+  };
+
+  this.removeAt = function (position) {
+    if (position > -1 && position < length) {
+      // logic:
+      // 1) for removing position 0th node from the Node list
+      // 2) for removing position last node from the Node list (ex:- [1,2,3] position === length-1)
+      // 3) for removing any of the position except oth and last node
+
+      let current = head,
+        previous,
+        index = 0;
+
+      if (position === 0) {
+        head = current.next;
+
+        if (length === 1) {
+          tail = null;
+        } else {
+          head.prev = null;
+        }
+        // testing purpose :
+        return "removed!";
+      } else if (position === length - 1) {
+        current = tail;
+        tail = current.prev;
+        tail.next = null;
+
+        // testing purpose :
+        return "removed!";
+      } else {
+        while (index++ < position) {
+          previous = current;
+          current = current.next;
+        }
+        previous.next = current.next;
+        current.next.prev = previous;
+      }
+
+      length--;
+    }
   };
 
   this.deleteHead = function () {
-    const removed = list.shift();
-
-    if (head) {
-      head = head.next;
-
-      if (head) head.prev = null;
-      else tail = null;
-    }
-
-    return removed;
+    return this.removeAt(0);
   };
 
   this.deleteTail = function () {
-    const removed = list.pop();
-
-    if (tail) {
-      tail = tail.prev;
-
-      if (tail) tail.next = null;
-      else head = null;
-    }
-
-    return removed;
+    return this.removeAt(length - 1);
   };
 
   this.getHead = function () {
-    console.log("head", head);
     return head;
   };
 
@@ -120,6 +181,7 @@ function doublyLinkedLL() {
   };
 }
 
+// DEQUEUE WITH DOUBLY LINKED LIST :
 function dequeueWithDLL() {
   // create doubly linked list object :
   const dll = new doublyLinkedLL();
@@ -199,13 +261,13 @@ console.log(dequeue.insertBack(5));
 
 console.log(dequeue.insertBack(9));
 
-console.log(dequeue.removeFront());
+dequeue.removeFront();
 
-console.log(dequeue.removeBack());
+dequeue.removeBack();
 
-console.log(dequeue.getFront());
+console.log("HEAD", dequeue.getFront());
 
-console.log(dequeue.getBack());
+console.log("TAIL", dequeue.getBack());
 
 console.log(dequeue.isEmpty());
 
