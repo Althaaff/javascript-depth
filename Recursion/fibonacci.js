@@ -12,6 +12,11 @@ function fibo(n) {
 console.log(fibo(7));
 
 // using recursion :
+/*
+   Each call to fiboRecursion(n) waits for the results of fiboRecursion(n-1) and fiboRecursion(n-2).
+   The base case stops the recursion when 
+   is 0 or 1, allowing the function to return values back up the call stack.
+*/
 function fiboRecursion(n) {
   //  base case :
   if (n <= 1) {
@@ -19,7 +24,7 @@ function fiboRecursion(n) {
   }
 
   // if base case doesnt hit return the main() function recursively :
-  return n * fiboRecursion(n - 1) + fiboRecursion(n - 2);
+  return fiboRecursion(n - 1) + fiboRecursion(n - 2);
 }
 
 console.log(fiboRecursion(7));
