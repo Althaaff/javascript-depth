@@ -22,4 +22,32 @@ function pascalsTriangle(numRows) {
   return rows;
 }
 
-console.log(pascalsTriangle(5));
+// console.log(pascalsTriangle(5));
+
+// optimized approach using recursion :
+function generatePascalsTriangle(numRows) {
+  if (numRows === 0) return [];
+
+  if (numRows === 1) {
+    console.log("found");
+    return [[1]];
+  }
+
+  const prevRows = generatePascalsTriangle(numRows - 1);
+
+  console.log("prevRows", prevRows);
+
+  const newRow = new Array(numRows).fill(1);
+
+  for (let i = 1; i < numRows - 1; i++) {
+    newRow[i] = prevRows[numRows - 2][i - 1] + prevRows[numRows - 2][i];
+
+    console.log("newRow", newRow);
+  }
+
+  prevRows.push(newRow);
+
+  return prevRows;
+}
+
+console.log(generatePascalsTriangle(4));
