@@ -1,4 +1,4 @@
-// find words leetcode problem (keyboard row) :
+// find words leetcode problem (keyboard row)
 
 function findWords(words) {
   let res = [];
