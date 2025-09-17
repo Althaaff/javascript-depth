@@ -24,11 +24,14 @@ function baseBallGame(operations) {
     records.push(0);
   }
 
-  for (let i = 0; i < records.length; i++) {
-    totalSum += records[i];
-  }
+  return records.reduce((a, b) => a + b, 0);
 
-  return totalSum;
+  // or you can use (for loop)
+  // for (let i = 0; i < records.length; i++) {
+  //   totalSum += records[i];
+  // }
+
+  // return totalSum;
 }
 
 console.log(baseBallGame(["5", "2", "C", "D", "+"]));
