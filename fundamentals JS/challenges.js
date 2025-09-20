@@ -71,9 +71,8 @@ function findPairs(arr, target) {
   let res = [];
 
   for (let i = 0, len = arr.length; i < len; i++) {
-    for (let j = i; j < len; j++) {
+    for (let j = i + 1; j < len; j++) {
       if (arr[i] + arr[j] === target) {
-        console.log(arr[i], arr[j]);
         res.push([arr[i], arr[j]]);
       }
     }
@@ -83,3 +82,25 @@ function findPairs(arr, target) {
 }
 
 console.log(findPairs([1, 2, 3, 4, 5], 5));
+
+// Bonus: Can you do it in O(n) time instead of O(n²)?
+function findPairs2(arr, target) {
+  let seen = new Set();
+  let res = [];
+
+  for (let num of arr) {
+    let complement = target - num;
+    console.log(complement);
+
+    if (seen.has(complement)) {
+      res.push([complement, num]);
+    }
+
+    // Add current number to seen set
+    seen.add(num);
+  }
+
+  return res;
+}
+
+console.log(findPairs2([1, 2, 3, 4, 5], 5));
