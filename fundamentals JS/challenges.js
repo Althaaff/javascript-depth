@@ -104,3 +104,47 @@ function findPairs2(arr, target) {
 }
 
 console.log(findPairs2([1, 2, 3, 4, 5], 5));
+
+// While Loop Challenge :
+// CHALLENGES FOR YOU TO SOLVE
+// Challenge 1: Number Guessing Game (Easy)
+// Create a number guessing game using while loop
+// The computer picks a random number 1-100
+// User keeps guessing until they get it right
+// Give "higher" or "lower" hints
+
+function numberGuessingGame(simulatedGuess) {
+  let targetNumber = Math.floor(Math.random() * 100) + 1;
+  let attempts = 0;
+  let guessIndex = 0;
+
+  console.log("Simulated game - Target is", targetNumber);
+
+  while (guessIndex < simulatedGuess.length) {
+    const userGuess = simulatedGuess[guessIndex];
+    attempts++;
+
+    if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+      console.log(`Invalid Guess: ${userGuess}. Skipping..`);
+      guessIndex++;
+      continue;
+    }
+
+    console.log(`Guess: ${attempts} - ${userGuess}`);
+
+    if (userGuess === targetNumber) {
+      return `Correct! You guessed ${targetNumber} in ${attempts} attempts.`;
+    } else if (userGuess < targetNumber) {
+      console.log("Too Low! Hint (try higher)");
+    } else {
+      console.log("Too High! Hint (try lower)");
+    }
+
+    guessIndex++;
+  }
+
+  return `Game over. Didn't guess ${targetNumber} in ${attempts} attempts.`;
+}
+
+// Test with simulated inputs:
+console.log(numberGuessingGame([76, 43, 40]));
