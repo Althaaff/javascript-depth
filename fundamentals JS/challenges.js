@@ -148,3 +148,32 @@ function numberGuessingGame(simulatedGuess) {
 
 // Test with simulated inputs:
 console.log(numberGuessingGame([76, 43, 40]));
+
+// Generate Fibonacci sequence using while loop
+// Stop when the next number would exceed a given limit
+// Example: limit = 50, output: [1, 1, 2, 3, 5, 8, 13, 21, 34]
+
+function fibonacciWhile(limit) {
+  // your code here :
+  let output = [];
+
+  let num = 0;
+  while (num < 2) {
+    output.push(1);
+    num++;
+  }
+
+  let isTrue = true;
+
+  while (isTrue) {
+    output.push(output[output.length - 1] + output[output.length - 2]);
+    let total = output[output.length - 1] + output[output.length - 2];
+
+    if (total > limit) {
+      isTrue = false;
+    }
+  }
+  return output;
+}
+
+console.log(fibonacciWhile(56));
