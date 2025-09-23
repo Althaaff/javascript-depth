@@ -199,3 +199,36 @@ console.log(digitalRoot(-9875)); // Should output: 2
 console.log(digitalRoot(123)); // Should output: 6
 console.log(digitalRoot(0)); // Should output: 6
 console.log(digitalRoot(9)); // Should output: 6
+
+// Challenge 4: Palindrome Checker with Processing (Medium)
+// Check if a string is a palindrome
+// But first, clean it: remove spaces, punctuation, make lowercase
+// Use while loop for the cleaning process
+// Example: "A man, a plan, a canal: Panama" → true
+
+function isPalindromeWhile(str) {
+  const convertedStr = str.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+  console.log(convertedStr.length);
+  let str1 = "";
+  let str2 = "";
+  let i = 0;
+  let j = convertedStr.length - 1;
+
+  while (i <= convertedStr.length && j >= 0) {
+    if (convertedStr[i] === convertedStr[j]) {
+      str1 += convertedStr[i];
+      i++;
+      str2 += convertedStr[j];
+      j--;
+    } else {
+      return false;
+    }
+  }
+
+  return str1 === str2;
+}
+
+console.log(isPalindromeWhile("A man, a plan, a canal: Panama"));
+console.log(isPalindromeWhile("MalaY!a:lam*"));
+
+console.log(isPalindromeWhile("race a car"));
