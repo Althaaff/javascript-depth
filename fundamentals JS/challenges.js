@@ -155,25 +155,47 @@ console.log(numberGuessingGame([76, 43, 40]));
 
 function fibonacciWhile(limit) {
   // your code here :
-  let output = [];
+  let output = [0, 1];
 
-  let num = 0;
-  while (num < 2) {
-    output.push(1);
-    num++;
-  }
+  let num = 1;
 
-  let isTrue = true;
+  while (num <= limit) {
+    const next = output[output.length - 1] + output[output.length - 2];
+    console.log("next", next);
 
-  while (isTrue) {
-    output.push(output[output.length - 1] + output[output.length - 2]);
-    let total = output[output.length - 1] + output[output.length - 2];
+    if (next > limit) break;
 
-    if (total > limit) {
-      isTrue = false;
-    }
+    output.push(next);
+    num = next;
   }
   return output;
 }
 
 console.log(fibonacciWhile(56));
+
+// Challenge 3: Digital Root Calculator (Medium)
+// Calculate the digital root of a number
+// Keep summing digits until you get a single digit
+// Example: 9875 → 9+8+7+5 = 29 → 2+9 = 11 → 1+1 = 2
+
+function digitalRoot(num) {
+  let sum = 0;
+  let tempNum = Math.abs(num);
+  sum = tempNum;
+
+  while (sum >= 10) {
+    tempNum = sum;
+    sum = 0;
+    while (tempNum > 0) {
+      sum += tempNum % 10;
+      tempNum = Math.floor(tempNum / 10);
+    }
+  }
+
+  return sum;
+}
+
+console.log(digitalRoot(-9875)); // Should output: 2
+console.log(digitalRoot(123)); // Should output: 6
+console.log(digitalRoot(0)); // Should output: 6
+console.log(digitalRoot(9)); // Should output: 6
