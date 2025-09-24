@@ -232,3 +232,35 @@ console.log(isPalindromeWhile("A man, a plan, a canal: Panama"));
 console.log(isPalindromeWhile("MalaY!a:lam*"));
 
 console.log(isPalindromeWhile("race a car"));
+
+// Challenge 5: Prime Number Generator (Hard)
+// Generate the first N prime numbers using while loops
+// Use nested while loops for primality testing
+
+function generatePrimes(count) {
+  // your code here
+  // outer while: until you have 'count' primes
+  let primes = [];
+  let num = 2;
+  while (primes.length < count) {
+    let i = 2;
+    let isPrime = true;
+    // inner while: to check if a number is prime
+    while (i <= Math.sqrt(num)) {
+      if (num % i === 0) {
+        isPrime = false;
+        break;
+      }
+      i++;
+    }
+
+    if (isPrime) {
+      primes.push(num);
+    }
+    num++;
+  }
+
+  return primes;
+}
+
+console.log(generatePrimes(10)); // [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
