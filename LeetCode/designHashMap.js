@@ -7,7 +7,8 @@ MyHashMap.prototype.put = function (key, value) {
 };
 
 MyHashMap.prototype.get = function (key) {
-  return this.data[key];
+  const value = this.data[key];
+  return this.data[key] !== undefined ? value : -1;
 };
 
 MyHashMap.prototype.remove = function (key) {
