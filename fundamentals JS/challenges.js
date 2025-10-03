@@ -264,3 +264,62 @@ function generatePrimes(count) {
 }
 
 console.log(generatePrimes(10)); // [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
+
+// For..Of Loop challenges
+// Challenge 1: Multi-Type Iterator (Medium)
+// Create a data structure that can iterate over different types of collections uniform
+class MultiCollection {
+  constructor() {
+    this.data = [];
+  }
+
+  add(collection) {
+    this.data.push(collection);
+  }
+
+  [Symbol.iterator]() {
+    let collectionIndex = 0;
+    let elementIterator = null;
+
+    return {
+      next: () => {
+        // If we don't have a current iterator or it's exhausted, get the next collection
+        while (collectionIndex < this.data.length) {
+          if (!elementIterator) {
+            const currentCollection = this.data[collectionIndex];
+
+            // Get the iterator for the current collection
+            elementIterator = currentCollection[Symbol.iterator]();
+          }
+
+          const elementResult = elementIterator.next();
+
+          if (!elementResult.done) {
+            return { value: elementResult.value, done: false };
+          } else {
+            collectionIndex++;
+            elementIterator = null;
+          }
+        }
+        // All collections exhausted
+        return { done: true };
+      },
+    };
+  }
+}
+
+const mc = new MultiCollection();
+mc.add([1, 2, 3]);
+mc.add("abc");
+mc.add(new Set([1, 2, 3, 4]));
+mc.add(
+  new Map([
+    [1, 2],
+    [3, 4],
+  ])
+);
+
+// iterating over multi colllection :
+for (let value of mc) {
+  console.log("value :", value);
+}
