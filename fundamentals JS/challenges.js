@@ -324,140 +324,213 @@
 //   console.log("value :", value);
 // }
 
-// Challenge 2: Smart Batch Processor
+// // Challenge 2: Smart Batch Processor
 
-async function processBatches(dataSource, options = {}) {
-  /*
-    Challenge: Process iterable data in batches with smart error handling
-    
-    Parameters:
-    - dataSource: Any iterable (array, generator, custom iterator)
-    - options: {
-        batchSize: 3,
-        maxRetries: 2,
-        onBatchComplete: (batch, results) => console.log('Batch done'),
-        onError: (batch, error) => console.log('Batch failed'),
-        processFunction: async (item) => item * 2
-      }
-    
-    Requirements:
-    1. Use for...of to iterate over dataSource
-    2. Process items in batches of specified size
-    3. If a batch fails, retry up to maxRetries times
-    4. Continue with next batch even if previous batch fails completely
-    5. Return summary: {total, processed, failed, batches}
-    6. Handle any iterable input (arrays, generators, strings, etc.)
-    
-    Advanced: Make it work with infinite generators by using for...of properly
-    */
+// async function processBatches(dataSource, options = {}) {
+//   /*
+//     Challenge: Process iterable data in batches with smart error handling
 
-  const {
-    batchSize = 5,
-    maxTries = 2,
-    onBatchComplete = () => {},
-    onError = () => {},
-    processFunction = async () => {},
-  } = options;
+//     Parameters:
+//     - dataSource: Any iterable (array, generator, custom iterator)
+//     - options: {
+//         batchSize: 3,
+//         maxRetries: 2,
+//         onBatchComplete: (batch, results) => console.log('Batch done'),
+//         onError: (batch, error) => console.log('Batch failed'),
+//         processFunction: async (item) => item * 2
+//       }
 
-  // tracking variables :
-  let total = 0;
-  let processed = 0;
-  let failed = 0;
-  let batches = 0;
-  let currentBatch = [];
+//     Requirements:
+//     1. Use for...of to iterate over dataSource
+//     2. Process items in batches of specified size
+//     3. If a batch fails, retry up to maxRetries times
+//     4. Continue with next batch even if previous batch fails completely
+//     5. Return summary: {total, processed, failed, batches}
+//     6. Handle any iterable input (arrays, generators, strings, etc.)
 
-  // Process each item from the data source
+//     Advanced: Make it work with infinite generators by using for...of properly
+//     */
 
-  for (let item of dataSource) {
-    currentBatch.push(item);
+//   const {
+//     batchSize = 5,
+//     maxTries = 2,
+//     onBatchComplete = () => {},
+//     onError = () => {},
+//     processFunction = async (item) => item,
+//   } = options;
+//   console.log("batchSize", batchSize);
 
-    total++;
+//   // tracking variables :
+//   let total = 0;
+//   let processed = 0;
+//   let failed = 0;
+//   let batches = 0;
+//   let currentBatch = [];
 
-    // Process when batch is full or we've collected enough items
-    if (currentBatch.length === batchSize) {
-      await processBatchWithRetry(currentBatch);
-      currentBatch = [];
-    }
+//   console.log("options", options);
+
+//   // Process each item from the data source
+
+//   for (let item of dataSource) {
+//     console.log("item peace:", item);
+//     currentBatch.push(item);
+
+//     total++;
+
+//     // Process when batch is full or we've collected enough items
+//     if (currentBatch.length === batchSize) {
+//       console.log("currentBatch", currentBatch, batchSize);
+//       await processBatchWithRetry(currentBatch);
+//       currentBatch = [];
+//     }
+//   }
+
+//   // Process any remaining items in the final partial batch
+//   if (currentBatch.length > 0) {
+//     await processBatchWithRetry(currentBatch);
+//   }
+
+//   // Helper function to process a single batch with retry logic :
+//   async function processBatchWithRetry(batch) {
+//     let lastError;
+//     let attempt = 0;
+
+//     // Retry loop :
+
+//     while (attempt <= maxTries) {
+//       try {
+//         // Process all items in the batch concurrently
+//         const results = await Promise.all(
+//           batch.map((item) => {
+//             console.log("item :", item);
+//             return processFunction(item);
+//           })
+//         );
+
+//         console.log("results", results);
+
+//         // Success - update counters and call callback
+//         processed += batch.length;
+//         batches++;
+//         onBatchComplete(batch, results);
+//         return;
+//       } catch (error) {
+//         lastError = error;
+//         attempt++;
+
+//         // If we've exhausted all retries, handle the failure
+//         if (attempt > maxTries) {
+//           failed += batch.length;
+//           batches++;
+//           onError(batch, lastError);
+//           return;
+//         }
+//       }
+//     }
+//   }
+
+//   return {
+//     total,
+//     processed,
+//     failed,
+//     batches,
+//   };
+// }
+// // test with defferent iterables :
+// async function testBatchProcessor() {
+//   // test with array :
+//   const array = [1, 2, 3, 4, 5];
+
+//   // test with generators :
+//   function* numberGenerator(max) {
+//     for (let i = 1; i <= max; i++) {
+//       yield i;
+//     }
+//   }
+
+//   // test with string :
+//   const string = "abcdefghi";
+
+//   // Simulate processing function that occasionally fails :
+//   async function flakyProcessor(item) {
+//     if (Math.random() < 0.3) {
+//       throw new Error(`Failed to process ${item}!`);
+//     }
+
+//     return item.toString().toUpperCase();
+//   }
+
+//   const results = await processBatches(array, {
+//     batchSize: 3,
+//     maxTries: 2,
+//     processFunction: flakyProcessor,
+//     onBatchComplete: (batch, results) =>
+//       console.log(`Batch Processed: ${batch} --> ${results}`),
+//     onError: (batch, error) => console.log(`Batch Failed! ${batch}`),
+//   });
+
+//   console.log("Final results:", results);
+// }
+
+// testBatchProcessor();
+
+// ( How to implement ) Custom Iterble :
+
+// Method 1: Using Symbol.iterator
+// Example 1: Making a custom configuration object iterable
+
+class ConfigManager {
+  constructor() {
+    // console.log("this empty obj ?", this);
+    this.settings = new Map();
+    this.metadata = { version: "1.0", created: new Date() };
   }
 
-  // Process any remaining items in the final partial batch
-  if (currentBatch.length > 0) {
-    await processBatchWithRetry(currentBatch);
+  set(key, value) {
+    this.settings.set(key, value);
+    return this;
   }
 
-  // Helper function to process a single batch with retry logic :
-  async function processBatchWithRetry(batch) {
-    let lastError;
-    let attempt = 0;
+  // Make the object iterable - will iterate over settings :
+  [Symbol.iterator]() {
+    let index = 0;
+    const settingsArray = Array.from(this.settings.entries());
+    console.log("settingsArray", settingsArray);
+    const metadataArray = Object.entries(this.metadata);
+    console.log("metadataArray", metadataArray);
+    const allEntries = [...settingsArray, ...metadataArray];
+    console.log("allEntries", allEntries);
 
-    // Retry loop :
-
-    while (attempt <= maxTries) {
-      try {
-        // Process all items in the batch concurrently
-        const results = await Promise.all(
-          batch.map((item) => processFunction(item))
-        );
-
-        // Success - update counters and call callback
-        processed += batch.length;
-        batches++;
-        onBatchComplete(batch, results);
-        return;
-      } catch (error) {
-        lastError = error;
-        attempt++;
-
-        // If we've exhausted all retries, handle the failure
-        if (attempt > maxRetries) {
-          failed += batch.length;
-          batches++;
-          onError(batch, lastError);
-          return;
+    return {
+      next() {
+        if (index < allEntries.length) {
+          return { value: allEntries[index++], done: false };
         }
-      }
-    }
+        return { done: true };
+      },
+    };
   }
 
-  return {
-    total,
-    processed,
-    failed,
-    batches,
-  };
+  // Alternative: Iterate only through values
+  *values() {
+    for (let [key, value] of this.settings) {
+      yield value;
+    }
+
+    for (let value of Object.values(this.metadata)) {
+      yield value;
+    }
+  }
 }
-// test with defferent iterables :
-async function testBatchProcessor() {
-  // test with array :
-  const array = [1, 2, 3, 4, 5];
 
-  // test with generators :
-  function* numberGenerator(max) {
-    for (let i = 1; i <= max; i++) {
-      yield i;
-    }
-  }
+const configManager = new ConfigManager();
 
-  // test with string :
-  const string = "abcdefghi";
+configManager.set("theme", "dark");
+configManager.set("language", "en");
+configManager.set("notification", true);
 
-  // Simulate processing function that occasionally fails :
-  async function flakyProcessor(item) {
-    if (Math.random() < 0.3) {
-      throw new Error(`Failed to process ${item}!`);
-    }
+console.log(configManager);
 
-    return item.toString().toUpperCase();
-  }
-
-  const results = await processBatches(array, {
-    batchSize: 3,
-    maxTries: 2,
-    processFunction: flakyProcessor,
-    onBatchComplete: (batch, results) =>
-      console.log(`Batch Processed: ${batch} --> ${results}`),
-    onError: (batch, error) => console.log(`Batch Failed! ${batch}`),
-  });
-
-  console.log("Final results:", results);
+for (let [key, value] of configManager) {
+  console.log(`key: ${key} value : ${value}`);
 }
