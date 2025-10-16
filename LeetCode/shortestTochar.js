@@ -31,3 +31,35 @@ function shortestToChar(s, c) {
 }
 
 console.log(shortestToChar("loveleetcode", "e"));
+
+// solution 2 easy approach :
+function shortestToChar2(s, c) {
+  let res = [];
+  res.length = s.length;
+
+  let index = s.indexOf(c);
+
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === c) {
+      index = i;
+      res[i] = 0;
+    } else {
+      res[i] = Math.abs(index - i);
+    }
+  }
+
+  index = s.lastIndexOf(c);
+
+  for (let i = s.length - 1; i >= 0; i--) {
+    if (s[i] === c) {
+      index = i;
+      // res[i] = 0; // donned to do again
+    } else {
+      res[i] = Math.min(res[i], Math.abs(index - i));
+    }
+  }
+
+  return res;
+}
+
+console.log(shortestToChar2("loveleetcode", "e"));
