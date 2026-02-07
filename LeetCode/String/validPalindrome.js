@@ -1,20 +1,14 @@
 function validPalindrome(str) {
   if (str.length === 0) return true;
 
-  let newStr = "";
-  str = str
-    .replace(/[^A-Za-z]/g, "")
-    .toLowerCase()
-    .split("")
-    .reverse()
-    .join("");
+  let cleanedStr = str.replace(/[^A-Za-z0-9]/g, "").toLowerCase();
 
-  for (let i = str.length - 1; i >= 0; i--) {
-    newStr += str[i];
-  }
+  let reversedStr = cleanedStr.split("").reverse().join("");
 
-  return newStr === str;
+  return cleanedStr === reversedStr;
 }
+
+console.log(validPalindrome("0P"));
 
 console.log(validPalindrome("A man, a plan, a canal: Panama"));
 console.log(validPalindrome("race a car"));
