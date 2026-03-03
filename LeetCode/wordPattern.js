@@ -5,24 +5,22 @@ function wordPattern(pattern, s) {
     return false;
   }
 
-  const patternToWord = {};
-  const wordToPattern = {};
+  const patternToWord = new Map();
+  const wordToPattern = new Map();
 
   for (let i = 0; i < pattern.length; i++) {
     const currentPatternChar = pattern[i];
     const currentWord = words[i];
 
-    if (patternToWord[currentPatternChar]) {
-      if (patternToWord[currentPatternChar] !== currentWord) {
+    if (patternToWord.has(currentPatternChar)) {
+      if (patternToWord.get(currentPatternChar) !== currentWord) {
         return false;
       }
+    } else if (wordToPattern.has(currentWord)) {
+      return false;
     } else {
-      if (wordToPattern[currentWord]) {
-        return false;
-      }
-
-      patternToWord[currentPatternChar] = currentWord;
-      wordToPattern[currentWord] = currentPatternChar;
+      patternToWord.set(currentPatternChar, currentWord);
+      wordToPattern.set(currentWord, currentPatternChar);
     }
   }
 
@@ -30,3 +28,6 @@ function wordPattern(pattern, s) {
 }
 
 console.log(wordPattern("abba", "dog cat cat dog"));
+console.log(wordPattern("aaaa", "dog cat cat dog")); // pattern does'nt match so // false
+console.log(wordPattern("abba", "dog cat cat fish"));
+console.log(wordPattern("abba", "dog constructor constructor dog"));
